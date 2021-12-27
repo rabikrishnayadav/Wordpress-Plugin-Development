@@ -12,3 +12,11 @@
 */
 
 if(!defined('ABSPATH')) exit; // Exit if accessed directly.
+
+register_activation_hook(__FILE__, 'vidsik_register_activation_hook');
+register_deactivation_hook(__FILE__, 'vidsik_register_deactivation_hook');
+register_uninstall_hook(__FILE__, 'vidsik_register_uninstall_hook');
+
+function vidsik_register_activation_hook(){}
+function vidsik_register_deactivation_hook(){}
+function vidsik_register_uninstall_hook(){}
