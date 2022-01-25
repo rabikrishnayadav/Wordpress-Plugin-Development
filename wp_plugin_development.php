@@ -14,10 +14,12 @@
 
 if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 
-register_activation_hook(__FILE__, 'vidsik_register_activation_hook');
-register_deactivation_hook(__FILE__, 'vidsik_register_deactivation_hook');
-register_uninstall_hook(__FILE__, 'vidsik_register_uninstall_hook');
+//There are 4 Action Hooks
 
-function vidsik_register_activation_hook(){}
-function vidsik_register_deactivation_hook(){}
-function vidsik_register_uninstall_hook(){}
+do_action(); // we use it to create our own hooks or wordpress are using this for creating the hooks
+
+add_action(); //In created function with do_action() hook With the help of this hooks we can perform many task like add,edit,update,modify,manupulate.etc functionality add. 
+
+remove_action(); // we use it for remove an action which is created before.
+
+has_action(); // Conditional statement, this hook will check the given function is existing or not.
