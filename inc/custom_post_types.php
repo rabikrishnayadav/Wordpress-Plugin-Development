@@ -7,7 +7,7 @@ function vswp_news_post(){
 	register_post_type('news', array(
 		'label' => "Global News",
 		'labels'=> array(
-		'name'                     => _x( 'News', 'News post type general name' ),
+		'name'                     => _x( 'Global News', 'News post type general name' ),
 		'singular_name'            => _x( 'News', 'News post type singular name' ),
 		'add_new'                  => _x( 'Add New News', 'News Post' ),
 		'add_new_item'             => __( 'Add New News' ),
@@ -40,6 +40,37 @@ function vswp_news_post(){
 		'public'=> true,
 		'description' => 'This is a Custom Post Type for News',
 		'supports'=> ['title','editor','comments','custom-fields','thumbnail'],
+	));
+
+	// texonomy add
+
+	register_taxonomy('news-categories',['news'], array(
+		'labels' => array(
+		'name'                       => _x( 'News Categories', 'taxonomy general name' ),
+		'singular_name'              => _x( 'News Category', 'taxonomy singular name' ),
+		'search_items'               => __( 'Search News Categories' ),
+		'popular_items'              => null,
+		'all_items'                  => __( 'All News Categories' ),
+		'parent_item'                => __( 'Parent News Category' ),
+		'parent_item_colon'          => __( 'Parent News Category:' ),
+		'edit_item'                  => __( 'Edit News Category' ),
+		'view_item'                  => __( 'View News Category' ),
+		'update_item'                => __( 'Update News Category' ),
+		'add_new_item'               => __( 'Add New News Category' ),
+		'new_item_name'              => __( 'New News Category Name' ),
+		'separate_items_with_commas' => null,
+		'add_or_remove_items'        => null,
+		'choose_from_most_used'      => null,
+		'not_found'                  => __( 'No News categories found.' ),
+		'no_terms'                   => __( 'No News categories' ),
+		'items_list_navigation'      => __( 'News Categories list navigation' ),
+		'items_list'                 => __( 'News Categories list' ),
+		/* translators: Tab heading when selecting from the most used terms. */
+		'most_used'                  => _x( 'Most News Categories Used', 'categories' ),
+		'back_to_items'              => __( '&larr; Go to News Categories' ),
+		),
+		'hierarchical' => true,
+		'public' => true
 	));
 }
 add_filter('template_include','vswp_news_template');
