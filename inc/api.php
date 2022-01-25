@@ -1,7 +1,7 @@
 <?php 
 if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 
-$post_info = wp_remote_retrieve_body(wp_remote_post('https://jsonplaceholder.typeicode.com/posts',[
+$post_info = wp_remote_retrieve_header(wp_remote_post('https://jsonplaceholder.typeicode.com/posts',[
 
 		'body' => [
 
@@ -9,7 +9,9 @@ $post_info = wp_remote_retrieve_body(wp_remote_post('https://jsonplaceholder.typ
 			'body'  => 'This is a body for Dummy post',
 			'userId'=> 10
 		],
-	])
+		'method'  => 'POST',
+		'content-type' => 'application/json',
+	]), 'X-Content-Type-Options'
 );
 	
 $posts = wp_remote_retrieve_body(wp_remote_get('https://jsonplaceholder.typeicode.com/posts'));
