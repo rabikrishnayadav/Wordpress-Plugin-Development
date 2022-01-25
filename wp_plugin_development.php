@@ -1,6 +1,5 @@
 <?php
 /**
-
 *Plugin Name: VSWP Dev Plugin
 *Plugin Uri: https://vidsik.com.np
 *Author: Rabi Kr Yadav
@@ -9,7 +8,6 @@
 * Tags: vswp, vidsik, vsplugin
 *Version: 1.0.0
 *Lisence: GPL V2
-
 */
 
 if(!defined('ABSPATH')) exit; // Exit if accessed directly.
@@ -23,6 +21,9 @@ include plugin_dir_path(__FILE__).'inc/metaboxes.php';
 // finction for custom post type
 include plugin_dir_path(__FILE__).'inc/custom_post_types.php';
 
+// ajax file add
+include plugin_dir_path(__FILE__).'inc/ajax.php';
+
 // add custom css,js file for front end
 
 add_action('wp_enqueue_scripts','vswp_enqueue_scripts');
@@ -32,6 +33,24 @@ function vswp_enqueue_scripts(){
 	wp_enqueue_style('vswp_plugin_css', plugin_dir_url(__FILE__).'assets/css/style.css'); // for add css file
 
 	wp_enqueue_script('vswp_plugin_js', plugin_dir_url(__FILE__).'assets/js/custom.js',array(),'1.0.0',true); // for add jss file
+
+	wp_enqueue_script('jquery'); // for add jquery in font end
+
+	wp_enqueue_script( 'vswp_js_plugin', plugin_dir_url(__FILE__).'assets/js/ajax.js', array(), '1.0.0',true);
+
+	wp_localize_script( 'vswp_js_plugin', 'ajax_object', array(
+		'ajaxurl'=>admin_url('admin-ajax.php'),
+		'num1'=>10)
+		);
+}
+
+// add custom js file for backend(admin) side
+
+add_action('admin_enqueue_scripts','vswp_admin_enqueue_scripts');
+
+function vswp_admin_enqueue_scripts(){
+
+	wp_enqueue_script( 'vswp_js_plugin', plugin_dir_url(__FILE__).'assets/js/ajax.js', array(), '1.0.0',true);
 }
 
 
@@ -71,7 +90,7 @@ function vswp_options_func(){
 	?>
 	<div class="wrap">
 		<?php settings_errors(); ?>
-		<form action="options.php" method="post">
+		<form id="ajax_form" action="options.php" method="post">
 			<?php settings_fields('vswp_option_group') ?>
 			<label for="">Setting One:
 			<input type="text" name="vswp_option_1" value="<?php echo esc_html(get_option('vswp_option_1')); ?>" /></label>
