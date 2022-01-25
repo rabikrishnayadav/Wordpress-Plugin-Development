@@ -96,6 +96,8 @@ function vswp_options_func(){
 			<input type="text" name="vswp_option_1" value="<?php echo esc_html(get_option('vswp_option_1')); ?>" /></label>
 			<?php submit_button('Save Changes') ?>
 		</form>
+		<!-- get data from api -->
+		<?php include plugin_dir_path(__FILE__).'inc/api.php'; ?>
 	</div>
 	<?php
 }

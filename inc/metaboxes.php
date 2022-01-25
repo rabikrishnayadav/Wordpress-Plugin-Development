@@ -1,5 +1,5 @@
 <?php 
-
+if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 add_action('admin_init', function(){
 
 	add_meta_box( '_vswpmetabox', 'VSWP Custom Metabox', 'vswp_custom_metabox', ['post','page']);

@@ -1,5 +1,5 @@
 <?php 
-
+if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 add_action('wp_ajax_my_ajax_action','vswp_ajax_action'); // for backend
 add_action('wp_ajax_my_front_ajax_action','my_front_ajax_action'); // for loged in user
 add_action('wp_ajax_nopriv_my_front_ajax_action','my_front_ajax_action'); // for not loged in user

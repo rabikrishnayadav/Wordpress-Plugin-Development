@@ -1,5 +1,5 @@
 <?php 
-
+if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 add_action('init','vswp_init');
 function vswp_init(){
 	add_shortcode('test','vswp_shortcode');

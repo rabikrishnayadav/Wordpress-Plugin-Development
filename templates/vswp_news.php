@@ -1,4 +1,5 @@
 <?php
+if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 /*
 * This template is used display single news posts
 */
