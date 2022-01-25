@@ -15,10 +15,13 @@
 if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 
 // function for add shortcode
-include plugin_dir_path(__FILE__).'assets/inc/shortcodes.php';
+include plugin_dir_path(__FILE__).'inc/shortcodes.php';
 
 // function for add metabox
-include plugin_dir_path(__FILE__).'assets/inc/metaboxes.php';
+include plugin_dir_path(__FILE__).'inc/metaboxes.php';
+
+// finction for custom post type
+include plugin_dir_path(__FILE__).'inc/custom_post_types.php';
 
 // add custom css,js file for front end
 
