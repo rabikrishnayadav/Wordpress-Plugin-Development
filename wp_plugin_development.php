@@ -14,23 +14,15 @@
 
 if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 
-//There are 4 function Action Hooks
-
-do_action(); // we use it to create our own hooks or wordpress are using this for creating the hooks
-
-add_action(); //In created function with do_action() hook With the help of this hooks we can perform many task like add,edit,update,modify,manupulate.etc functionality add. 
-
-remove_action(); // we use it for remove an action which is created before.
-
-has_action(); // Conditional statement, this hook will check the given function is existing or not.
-
-
-// There are 4 function in Filter Hooks
-
-apply_filters(); // we can use it for apply any filter on specific element or create new function 
-
-add_filter(); // same as add_action hook
-
-remove_filter(); // same as add_action hook
-
-has_filter(); // same as add_action hook
+// function for add shortcode
+add_action('init','vswp_init');
+function vswp_init(){
+	add_shortcode('test','vswp_shortcode');
+}
+function vswp_shortcode($atts){
+	$atts = shortcode_atts(array(
+		'message' => 'Hello from ShortCode',
+		), $atts, 'test'
+	);
+	return $atts['message'];
+}
