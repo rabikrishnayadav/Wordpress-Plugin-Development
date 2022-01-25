@@ -42,25 +42,22 @@ function vswp_plugin_menu(){
 	add_submenu_page('vswp-options','VSWP Setting','VSWP Setting','manage_options','vswp-layout','vswp_settings_func');
 }
 
+register_activation_hook(__FILE__, function(){
+	add_option('vswp_option_1','');
+});
+
+register_deactivation_hook(__FILE__, function(){
+	delete_option('vswp_option_1');
+});
+
 function vswp_options_func(){
 	echo "<h1 style='text-align:center'>VSWP Options Menu</h1>";
 	?>
 	<div class="wrap">
-		<h3>Form example</h3>
 		<form action="options.php" method="post">
-			<input type="text" placeholder="Enter Name" name="vswp_name" />
-			<input type="email" placeholder="Enter Email" name="vswp_email" />
-			<input type="password" placeholder="Enter Password" name="vswp_password" />
-			<input type="number" placeholder="Enter Mobile Number" name="vswp_number" />
-			<input type="file" name="vswp_file" />
-			<select>
-				<option>html</option>
-				<option>css</option>
-				<option>javascript</option>
-				<option>php</option>
-				<option>MySql</option>
-			</select>
-			<input type="button" name="button" value="Button">
+			<label for="">Setting One:
+			<input type="text" name="vswp_option_1" value="<?php echo esc_html(get_option('vswp_option_1')); ?>" /></label>
+			<?php submit_button('Save Changes') ?>
 		</form>
 	</div>
 	<?php
