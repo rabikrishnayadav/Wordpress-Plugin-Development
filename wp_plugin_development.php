@@ -1,11 +1,12 @@
 <?php
 /**
 
-*Plugin Name: Wp Plugin Development
+*Plugin Name: VSWP Dev Plugin
 *Plugin Uri: https://vidsik.com.np
 *Author: Rabi Kr Yadav
 *Author Uri: https://rabikrishnayadav.com.np
 *Description: With This plugin i am going to learn how to make wordpress plugin
+* Tags: vswp, vidsik, vsplugin
 *Version: 1.0.0
 *Lisence: GPL V2
 
