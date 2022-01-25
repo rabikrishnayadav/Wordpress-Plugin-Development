@@ -17,6 +17,9 @@ if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 // function for add shortcode
 include plugin_dir_path(__FILE__).'assets/inc/shortcodes.php';
 
+// function for add metabox
+include plugin_dir_path(__FILE__).'assets/inc/metaboxes.php';
+
 // add custom css,js file for front end
 
 add_action('wp_enqueue_scripts','vswp_enqueue_scripts');
