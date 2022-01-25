@@ -32,6 +32,7 @@ function vswp_enqueue_scripts(){
 // add top-level Menu or Sub-Menu om Menu Bar
 
 add_action('admin_menu','vswp_plugin_menu');
+add_action('admin_menu','vswp_process_form_settings');
 
 function vswp_plugin_menu(){
 
@@ -50,11 +51,22 @@ register_deactivation_hook(__FILE__, function(){
 	delete_option('vswp_option_1');
 });
 
+function vswp_process_form_settings(){
+
+	register_setting('vswp_option_group','vswp_option_name');
+
+	if (isset($_POST['action']) && current_user_can('manage_options')) {
+		update_option('vswp_option_1', sanitize_text_field($_POST['vswp_option_1']));
+	}
+}
+
 function vswp_options_func(){
 	echo "<h1 style='text-align:center'>VSWP Options Menu</h1>";
 	?>
 	<div class="wrap">
+		<?php settings_errors(); ?>
 		<form action="options.php" method="post">
+			<?php settings_fields('vswp_option_group') ?>
 			<label for="">Setting One:
 			<input type="text" name="vswp_option_1" value="<?php echo esc_html(get_option('vswp_option_1')); ?>" /></label>
 			<?php submit_button('Save Changes') ?>
