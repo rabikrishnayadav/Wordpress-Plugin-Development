@@ -43,8 +43,27 @@ function vswp_plugin_menu(){
 }
 
 function vswp_options_func(){
-
 	echo "<h1 style='text-align:center'>VSWP Options Menu</h1>";
+	?>
+	<div class="wrap">
+		<h3>Form example</h3>
+		<form action="options.php" method="post">
+			<input type="text" placeholder="Enter Name" name="vswp_name" />
+			<input type="email" placeholder="Enter Email" name="vswp_email" />
+			<input type="password" placeholder="Enter Password" name="vswp_password" />
+			<input type="number" placeholder="Enter Mobile Number" name="vswp_number" />
+			<input type="file" name="vswp_file" />
+			<select>
+				<option>html</option>
+				<option>css</option>
+				<option>javascript</option>
+				<option>php</option>
+				<option>MySql</option>
+			</select>
+			<input type="button" name="button" value="Button">
+		</form>
+	</div>
+	<?php
 }
 function vswp_layout_func(){
 
