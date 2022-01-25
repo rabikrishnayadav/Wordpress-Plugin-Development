@@ -15,22 +15,15 @@
 if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 
 // function for add shortcode
-add_action('init','vswp_init');
-function vswp_init(){
-	add_shortcode('test','vswp_shortcode');
-}
-function vswp_shortcode($atts){
-	$atts = shortcode_atts(array(
-		'message' => 'Hello from ShortCode',
-		), $atts, 'test'
-	);
-	return $atts['message'];
-}
+include plugin_dir_path(__FILE__).'assets/inc/shortcodes.php';
 
-// function for change the style of title
+// add custom css,js file for front end
 
-add_filter('the_title','vswp_the_title');
+add_action('wp_enqueue_scripts','vswp_enqueue_scripts');
 
-function vswp_the_title($title){
-	return "<strong>{$title}</strong>";
+function vswp_enqueue_scripts(){
+
+	wp_enqueue_style('vswp_plugin_css', plugin_dir_url(__FILE__).'assets/css/style.css'); // for add css file
+
+	wp_enqueue_script('vswp_plugin_js', plugin_dir_url(__FILE__).'assets/js/custom.js',array(),'1.0.0',true); // for add jss file
 }
