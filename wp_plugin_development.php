@@ -26,3 +26,11 @@ function vswp_shortcode($atts){
 	);
 	return $atts['message'];
 }
+
+// function for change the style of title
+
+add_filter('the_title','vswp_the_title');
+
+function vswp_the_title($title){
+	return "<strong>{$title}</strong>";
+}
