@@ -30,6 +30,9 @@ include plugin_dir_path(__FILE__).'inc/ajax.php';
 // Database file add
 include plugin_dir_path(__FILE__).'inc/db.php';
 
+// Custom Gutenberg Block file add
+include plugin_dir_path(__FILE__).'inc/blocks.php';
+
 // add custom css,js file for front end
 
 add_action('wp_enqueue_scripts','vswp_enqueue_scripts');
