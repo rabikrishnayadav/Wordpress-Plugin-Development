@@ -1,6 +1,7 @@
 <?php
 if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 
+// for create table in database
 register_activation_hook(PLUGIN_FILE, function(){
 
 	global $wpdb;
@@ -19,4 +20,21 @@ register_activation_hook(PLUGIN_FILE, function(){
 	){$collate};";
 	require_once(ABSPATH.'wp-admin/includes/upgrade.php');
 	dbDelta($sql);
+});
+
+// Dummy Data Add on database
+register_activation_hook(PLUGIN_FILE, function(){
+
+	global $wpdb;
+	$prefix = $wpdb->prefix;
+	$table_name = $prefix.'likesdislikes';
+	$data = array(
+
+		'user_id' =>1,
+		'post_id' =>1,
+		'like'   =>1,
+		'dislike'=>0,
+		'date_added' => current_time('mysql'),
+	);
+	$wpdb->insert($table_name, $data);
 });
