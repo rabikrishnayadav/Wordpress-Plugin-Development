@@ -17,6 +17,6 @@ register_activation_hook(PLUGIN_FILE, function(){
 		`date_added` timestamp NULL DEFAULT NULL,
 		PRIMARY KEY(`id`)
 	){$collate};";
-	require_once(ABSPATH,'wp-admin/includes/upgrade.php');
+	require_once(ABSPATH.'wp-admin/includes/upgrade.php');
 	dbDelta($sql);
 });
