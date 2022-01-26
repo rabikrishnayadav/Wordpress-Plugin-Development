@@ -38,3 +38,13 @@ register_activation_hook(PLUGIN_FILE, function(){
 	);
 	$wpdb->insert($table_name, $data);
 });
+
+
+register_deactivation_hook(PLUGIN_FILE, function(){
+
+	global $wpdb;
+	$prefix = $wpdb->prefix;
+	$table_name = $prefix.'likesdislikes';
+	$sql = "TRUNCATE TABLE `{$table_name}`;";
+	$wpdb->query($sql);
+});
