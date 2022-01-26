@@ -12,6 +12,9 @@
 
 if(!defined('ABSPATH')) exit; // Exit if accessed directly.
 
+// constant for plugin file
+define('PLUGIN_FILE',__FILE__);
+
 // function for add shortcode
 include plugin_dir_path(__FILE__).'inc/shortcodes.php';
 
@@ -23,6 +26,9 @@ include plugin_dir_path(__FILE__).'inc/custom_post_types.php';
 
 // ajax file add
 include plugin_dir_path(__FILE__).'inc/ajax.php';
+
+// Database file add
+include plugin_dir_path(__FILE__).'inc/db.php';
 
 // add custom css,js file for front end
 
